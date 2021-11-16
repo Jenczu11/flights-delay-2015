@@ -1,0 +1,36 @@
+C:\Users\CEL\.virtualenvs\prediction-7YXgCArA\Scripts\python.exe "C:/Users/CEL/Desktop/Magisterka/Semestr 2/DZD/prediction/main.py"
+Started loading data...
+Finished loading data.
+Removing rows with at least one null value...
+Building data set with columns which will be used for prediction:
+AIRLINE, ORIGIN_AIRPORT, DESTINATION_AIRPORT, DAY, DISTANCE, DEPARTURE_DELAY, SCHEDULED_TIME.
+Parsing columns to appropriate types...
+Labeling columns: AIRLINE, ORIGIN_AIRPORT, DESTINATION_AIRPORT and DAY...
+Splitting data set for train and test (80%/20%)...
+Normalizing data...
+Started calculating regressions...
+===============================
+Learning with Linear Regression
+Mean Absolute Error: 8.789905348157182
+Mean Squared Error: 157.2531866224895
+Root Mean Squared Error: 12.540063262300135
+R2 :  0.896984668070408
+Plotting results...
+===============================
+Learning with Lasso Regression
+Mean Absolute Error: 8.907012321872386
+Mean Squared Error: 160.28133899565788
+Root Mean Squared Error: 12.660226656567325
+R2 :  0.8950009491483604
+Plotting results...
+===============================
+Learning with Decision Tree Regression
+Mean Absolute Error: 8.638653050039217
+Mean Squared Error: 153.82463397336534
+Root Mean Squared Error: 12.402605934776988
+R2 :  0.899230686079795
+Plotting results...
+
+Done.
+
+Process finished with exit code 0
