@@ -1,0 +1,35 @@
+Started loading data...
+Finished loading data.
+Removing rows with at least one null value...
+Building data set with columns which will be used for prediction:
+AIRLINE, ORIGIN_AIRPORT, DESTINATION_AIRPORT, DAY, DISTANCE, DEPARTURE_DELAY, SCHEDULED_TIME.
+Parsing columns to appropriate types...
+Labeling columns: AIRLINE, ORIGIN_AIRPORT, DESTINATION_AIRPORT and DAY...
+Splitting data set for train and test (80%/20%)...
+Normalizing data...
+Started calculating regressions...
+===============================
+Learning with Linear Regression
+Mean Absolute Error: 8.779230363703196
+Mean Squared Error: 157.52999986073831
+Root Mean Squared Error: 12.55109556416245
+R2 :  0.8792007325754124
+Plotting results...
+===============================
+Learning with Lasso Regression
+Mean Absolute Error: 8.721897254166473
+Mean Squared Error: 156.63817444804044
+Root Mean Squared Error: 12.515517346400046
+R2 :  0.8798846141003269
+Plotting results...
+===============================
+Learning with Decision Tree Regression
+Mean Absolute Error: 9.338856321354674
+Mean Squared Error: 179.19156343592527
+Root Mean Squared Error: 13.386245307625483
+R2 :  0.862589921850681
+Plotting results...
+
+Done.
+
+Process finished with exit code 0

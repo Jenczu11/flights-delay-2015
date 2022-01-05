@@ -1,11 +1,8 @@
-from datetime import datetime
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import Lasso, LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
@@ -60,7 +57,7 @@ le = LabelEncoder()
 flights_data_X['AIRLINE'] = le.fit_transform(flights_data_X['AIRLINE'])
 flights_data_X['ORIGIN_AIRPORT'] = le.fit_transform(flights_data_X['ORIGIN_AIRPORT'])
 flights_data_X['DESTINATION_AIRPORT'] = le.fit_transform(flights_data_X['DESTINATION_AIRPORT'])
-#flights_data_X['DAY'] = le.fit_transform(flights_data_X['DAY'])
+flights_data_X['DAY'] = le.fit_transform(flights_data_X['DAY'])
 
 flights_data_Y = flights_data[[
     'ARRIVAL_DELAY',
@@ -73,14 +70,18 @@ flights_data_Y = flights_data_Y.dropna(
             'DAY'
 ])
 
+flights_data_Y['DAY'] = le.fit_transform(flights_data_Y['DAY'])
+
 print("Splitting data set for train and test (80%/20%)...")
 
-X_train = flights_data_X[(flights_data_X['MONTH'] == 1) & (flights_data_X['DAY'] < 23)]
-X_test = flights_data_X[(flights_data_X['MONTH'] == 1) & (flights_data_X['DAY'] > 23)]
+X_train = flights_data_X[(flights_data_X['MONTH'] == 12) & (flights_data_X['DAY'] < 23)]
+X_test = flights_data_X[(flights_data_X['MONTH'] == 12) & (flights_data_X['DAY'] > 23)]
 
-y_train = flights_data_Y[(flights_data_Y['MONTH'] == 1) & (flights_data_Y['DAY'] < 23)]
-y_test = flights_data_Y[(flights_data_Y['MONTH'] == 1) & (flights_data_Y['DAY'] > 23)]
+y_train = flights_data_Y[(flights_data_Y['MONTH'] == 12) & (flights_data_Y['DAY'] < 23)]
+y_test = flights_data_Y[(flights_data_Y['MONTH'] == 12) & (flights_data_Y['DAY'] > 23)]
 
+y_train = y_train['ARRIVAL_DELAY']
+y_test = y_test['ARRIVAL_DELAY']
 
 print("Normalizing data...")
 sc1 = StandardScaler()
@@ -91,8 +92,8 @@ X_test_sc = sc1.fit_transform(X_test)
 LinearRegression = LinearRegression()
 Lasso = Lasso(alpha=0.25, max_iter=10000)
 DecisionTree = DecisionTreeRegressor(
-    min_samples_split=300,
-    min_samples_leaf=75,
+    min_samples_split=40,
+    min_samples_leaf=20,
     max_features="auto",
     random_state=1
 )
